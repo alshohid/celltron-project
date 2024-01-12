@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+    basePath:'/celltron',
+    distDir:'build'
+}
 
 module.exports = nextConfig
