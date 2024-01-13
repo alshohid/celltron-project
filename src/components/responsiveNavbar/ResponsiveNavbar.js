@@ -1,10 +1,18 @@
-// components/Navbar.js
+ 
 'use client'
 import { useState } from 'react';
 import Link from 'next/link';
-
+import {usePathname} from 'next/navigation'
 const ResponsiveNavbar = () => {
+  const pathname = usePathname();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+const menuItems = [
+  {name:'হোম', path:'/'},
+  {name:'ড্যাসবোর্ড',path:'/dashboard'},
+    {name:'ব্লগ',path:'/blog'},
+    {name:'লগইন',path:'/login'},
+]
+ 
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -15,18 +23,24 @@ const ResponsiveNavbar = () => {
   return (
     <nav className="bg-blue-500 p-4">
       <div className="container mx-auto flex items-center justify-between">
-        {/* Desktop Menu */}
+        
         <div className="hidden md:flex space-x-4">
-          <Link href="/">
-             Home
-          </Link>
-          <Link href="/dashboard">
-          dashboard 
-          </Link>
-          
+          {
+            menuItems.map((item,index)=>{
+              return (
+                <>
+                <div>
+                   <Link key={index} href={item.path} className={pathname === item.path ? `bg-red-400 px-2 py-2 rounded-md`:`transparent`} > {item.name} </Link>
+                </div>
+                
+                </>
+              )
+            })
+          }
+           
         </div>
 
-        {/* Mobile Drawer Button */}
+        
         <div className="md:hidden">
           <button
             onClick={toggleDrawer}
@@ -37,7 +51,7 @@ const ResponsiveNavbar = () => {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+     
       {isDrawerOpen && (
         <div className="md:hidden absolute inset-0 bg-black bg-opacity-50 z-10">
           <div className="flex justify-end p-4">
@@ -50,15 +64,19 @@ const ResponsiveNavbar = () => {
           </div>
 
           <div className="flex flex-col items-start bg-black text-white">
-            <Link onClick={closeDrawer} href="/" className='text-white py-2 transition'>
-             Home 
-            </Link>
-            <Link  onClick={closeDrawer} href="/dashboard"  className='text-white py-2 transition'>
-              Dashboard
-            </Link>
-            <Link href="/login">
-              Login
-            </Link>
+            {
+            menuItems.map((item,index)=>{
+              return (
+                <>
+                <div>
+                   <Link key={index} href={item.path} className={pathname === item.path ? `bg-red-400 px-2 py-2 rounded-md`:`transparent`} > {item.name} </Link>
+                </div>
+                
+                </>
+              )
+            })
+          }
+           
              
           </div>
         </div>
