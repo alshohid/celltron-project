@@ -1,0 +1,9 @@
+ .ratingContainer{
+    display: flex;
+    padding: 16px 8px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    border-radius: 8px;
+    background:#FFFBEE ;
+ }
