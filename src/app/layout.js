@@ -24,7 +24,7 @@ export default function RootLayout(props) {
       <body>
          <AppProvider>
            {/* <div className='sticky top-0 '> <NavBar/> </div>  */}
-       <div className='sticky top-0'> <ResponsiveNavbar/></div> 
+       <div className='sticky top-0 '> <ResponsiveNavbar/></div> 
             {props.children}
             <Footer/>
           </AppProvider> 

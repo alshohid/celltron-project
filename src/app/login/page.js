@@ -4,17 +4,17 @@ import {useRouter} from 'next/navigation'
 import {useSharableContextData} from '../../components/appContext/AppProvider'
 const Login = () => {
     const router= useRouter()
-    const [shareableData,setShareableData] = useSharableContextData({})
+    const [shareableData,setShareable] = useSharableContextData({})
      const [formData,setFormData]=useState({
         pName:'', pDescription: '', clientName:'', contractor:''
      })
     
       const inputOnChange = (inputName,inputValue)=>{
-         setFormData((prevResult)=>({
-            ...prevResult,
+         setFormData( {
+            ...formData,
             [inputName]:inputValue
-
-         }))
+             }
+          )
 
 
       }
@@ -24,7 +24,7 @@ const Login = () => {
      console.log('formData = ', formData)
 
      if(formData){
-        setShareableData(formData)
+        setShareable(formData)
         router.push('/dashboard')
            setFormData({
                 pName: '',
