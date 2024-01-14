@@ -20,6 +20,10 @@ export default function BasicRating({value,setValue}) {
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
+        sx={{
+           
+          '& .MuiSvgIcon-root': 'text-yellow-400 text-3xl',  
+        }}
       />
        
     </Box>
